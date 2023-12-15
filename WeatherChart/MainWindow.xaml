@@ -1,0 +1,265 @@
+﻿<Window
+    x:Class="WeatherChart.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="MainWindow"
+    Width="775"
+    Height="450">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="51*" />
+            <ColumnDefinition Width="724*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="51*" />
+            <RowDefinition Height="299*" />
+            <RowDefinition Height="31*" />
+            <RowDefinition Height="53*"/>
+        </Grid.RowDefinitions>
+        <Canvas
+            x:Name="canvas"
+            Grid.RowSpan="4"
+            Grid.ColumnSpan="2"
+            Background="White">
+            <Line
+                x:Name="xAxis"
+                Stroke="Black"
+                X1="50"
+                X2="775"
+                Y1="350"
+                Y2="350" />
+            <Line
+                x:Name="yAxis"
+                Stroke="Black"
+                X1="50"
+                X2="50"
+                Y1="50"
+                Y2="350" />
+            <TextBlock
+                x:Name="xLabel"
+                Margin="250,360,0,0"
+                FontSize="14"
+                Foreground="Black"
+                Text="Час" />
+            <TextBlock
+                x:Name="yLabel"
+                Margin="10,10,0,0"
+                FontSize="14"
+                Foreground="Black"
+                Text="Скорость воздуха (м/с)" />
+            <!--  Заменяем ItemsControl на StackPanel  -->
+            <StackPanel Margin="50,355,0,0" Orientation="Horizontal">
+                <!--  Добавляем TextBlock для каждого часа  -->
+                <TextBlock
+                    Margin="0,0,20,0"
+                    FontSize="12"
+                    Foreground="Black"
+                    Text="0" />
+                <TextBlock
+                    Margin="0,0,20,0"
+                    FontSize="12"
+                    Foreground="Black"
+                    Text="1" />
+                <TextBlock
+                    Margin="0,0,20,0"
+                    FontSize="12"
+                    Foreground="Black"
+                    Text="2" />
+                <TextBlock
+                    Margin="0,0,20,0"
+                    FontSize="12"
+                    Foreground="Black"
+                    Text="3" />
+                <TextBlock
+                    Margin="0,0,20,0"
+                    FontSize="12"
+                    Foreground="Black"
+                    Text="4" />
+                <TextBlock
+                    Margin="0,0,20,0"
+                    FontSize="12"
+                    Foreground="Black"
+                    Text="5" />
+                <TextBlock
+                    Margin="0,0,20,0"
+                    FontSize="12"
+                    Foreground="Black"
+                    Text="6" />
+                <TextBlock
+                    Margin="0,0,20,0"
+                    FontSize="12"
+                    Foreground="Black"
+                    Text="7" />
+                <TextBlock
+                    Margin="0,0,20,0"
+                    FontSize="12"
+                    Foreground="Black"
+                    Text="8" />
+                <TextBlock
+                    Margin="0,0,20,0"
+                    FontSize="12"
+                    Foreground="Black"
+                    Text="9" />
+                <TextBlock
+                    Margin="0,0,20,0"
+                    FontSize="12"
+                    Foreground="Black"
+                    Text="10" />
+                <TextBlock
+                    Margin="0,0,20,0"
+                    FontSize="12"
+                    Foreground="Black"
+                    Text="11" />
+                <TextBlock
+                    Margin="0,0,20,0"
+                    FontSize="12"
+                    Foreground="Black"
+                    Text="12" />
+                <TextBlock
+                    Margin="0,0,20,0"
+                    FontSize="12"
+                    Foreground="Black"
+                    Text="13" />
+                <TextBlock
+                    Margin="0,0,20,0"
+                    FontSize="12"
+                    Foreground="Black"
+                    Text="14" />
+                <TextBlock
+                    Margin="0,0,20,0"
+                    FontSize="12"
+                    Foreground="Black"
+                    Text="15" />
+                <TextBlock
+                    Margin="0,0,20,0"
+                    FontSize="12"
+                    Foreground="Black"
+                    Text="16" />
+                <TextBlock
+                    Margin="0,0,20,0"
+                    FontSize="12"
+                    Foreground="Black"
+                    Text="17" />
+                <TextBlock
+                    Margin="0,0,20,0"
+                    FontSize="12"
+                    Foreground="Black"
+                    Text="18" />
+                <TextBlock
+                    Margin="0,0,20,0"
+                    FontSize="12"
+                    Foreground="Black"
+                    Text="19" />
+                <TextBlock
+                    Margin="0,0,20,0"
+                    FontSize="12"
+                    Foreground="Black"
+                    Text="20" />
+                <TextBlock
+                    Margin="0,0,20,0"
+                    FontSize="12"
+                    Foreground="Black"
+                    Text="21" />
+                <TextBlock
+                    Margin="0,0,20,0"
+                    FontSize="12"
+                    Foreground="Black"
+                    Text="22" />
+                <TextBlock
+                    Margin="0,0,20,0"
+                    FontSize="12"
+                    Foreground="Black"
+                    Text="23" />
+            </StackPanel>
+
+            <Polyline
+                x:Name="polyline"
+                Stroke="Blue"
+                StrokeThickness="2" />
+            <Ellipse x:Name="point" Fill="CornflowerBlue" />
+            
+
+        </Canvas>
+        <TextBlock Canvas.Left="64" TextWrapping="Wrap" Text="TextBlock" Grid.Column="1" Grid.Row="3" x:Name="nameDaysOfWeek"/>
+        <Button x:Name="freezeBtn"
+                Grid.Column="1"
+                Grid.Row="3"
+                Height="20"
+                Width="65" 
+                HorizontalAlignment="Left" Margin="0,10,0,0"
+                Content="Freeze" Click="freezeBtn_Click" ></Button>
+        <StackPanel
+            Grid.Row="1"
+            Grid.Column="0"
+            Height="299"
+            Margin="30,10,0,0"
+            VerticalAlignment="Top" Grid.RowSpan="2">
+            <TextBlock
+                x:Name="speed0"
+                Margin="0,0,0,12"
+                FontSize="12"
+                Foreground="Black"
+                Text="10" />
+            <TextBlock
+                x:Name="speed1"
+                Margin="0,0,0,12"
+                FontSize="12"
+                Foreground="Black"
+                Text="9" />
+            <TextBlock
+                x:Name="speed2"
+                Margin="0,0,0,12"
+                FontSize="12"
+                Foreground="Black"
+                Text="8" />
+            <TextBlock
+                x:Name="speed3"
+                Margin="0,0,0,12"
+                FontSize="12"
+                Foreground="Black"
+                Text="7" />
+            <TextBlock
+                x:Name="speed4"
+                Margin="0,0,0,12"
+                FontSize="12"
+                Foreground="Black"
+                Text="6" />
+            <TextBlock
+                x:Name="speed5"
+                Margin="0,0,0,11"
+                FontSize="12"
+                Foreground="Black"
+                Text="5" />
+            <TextBlock
+                x:Name="speed6"
+                Margin="0,0,0,11"
+                FontSize="12"
+                Foreground="Black"
+                Text="4" />
+            <TextBlock
+                x:Name="speed7"
+                Margin="0,0,0,11"
+                FontSize="12"
+                Foreground="Black"
+                Text="3" />
+            <TextBlock
+                x:Name="speed8"
+                Margin="0,0,0,11"
+                FontSize="12"
+                Foreground="Black"
+                Text="2" />
+            <TextBlock
+                x:Name="speed9"
+                Margin="0,0,0,11"
+                FontSize="12"
+                Foreground="Black"
+                Text="1" />
+            <TextBlock
+                x:Name="speed10"
+                FontSize="12"
+                Foreground="Black"
+                Text="0" />
+        </StackPanel>
+
+    </Grid>
+</Window>
